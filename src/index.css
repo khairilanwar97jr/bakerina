@@ -1,0 +1,14 @@
+@import "tailwindcss";
+
+@theme {
+  --color-brand-white: #fdfcf8; /* Warm cream/parchment */
+  --color-brand-yellow: #ffc107; /* Golden honey yellow */
+  --color-brand-black: #0c0a09;  /* Stone black */
+  
+  --font-serif: "DM Serif Display", serif;
+  --font-sans: "Inter", sans-serif;
+}
+
+/* Add this to your index.html head for the beautiful serif font:
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Inter:wght@400;700;900&display=swap" rel="stylesheet">
+*/
