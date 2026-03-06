@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import imageB from './assets/imageB.JPG';
+import imageB from './assets/imageB.jpg';
 import logoNoBackground from './assets/logoNoBackground.png';
-import pizza from './assets/pizza.JPG';
+import pizza from './assets/pizza.jpg';
 import hiring from './assets/hiring.jpg';
 import bangibranch from './assets/bangibranch.jpg';
 import menu1 from './assets/menu1.jpg';
