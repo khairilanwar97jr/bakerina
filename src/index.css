@@ -1,14 +1,49 @@
 @import "tailwindcss";
 
 @theme {
-  --color-brand-white: #fdfcf8; /* Warm cream/parchment */
-  --color-brand-yellow: #ffc107; /* Golden honey yellow */
-  --color-brand-black: #0c0a09;  /* Stone black */
-  
+  --color-brand-white: #fdfcf8;
+  --color-brand-yellow: #ffc107;
+  --color-brand-black: #0c0a09; 
   --font-serif: "DM Serif Display", serif;
   --font-sans: "Inter", sans-serif;
 }
 
-/* Add this to your index.html head for the beautiful serif font:
-<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Inter:wght@400;700;900&display=swap" rel="stylesheet">
-*/
+/* --- ANIMATIONS --- */
+@keyframes float {
+  0% { transform: translateY(0px) rotate(0deg); }
+  50% { transform: translateY(-15px) rotate(1.5deg); }
+  100% { transform: translateY(0px) rotate(0deg); }
+}
+
+@keyframes revealText {
+  0% { opacity: 0; transform: translateY(30px); filter: blur(10px); }
+  100% { opacity: 1; transform: translateY(0); filter: blur(0); }
+}
+
+@keyframes slideInRight {
+  0% { opacity: 0; transform: translateX(60px); }
+  100% { opacity: 1; transform: translateX(0); }
+}
+
+/* --- UTILITIES --- */
+@layer utilities {
+  .animate-float {
+    animation: float 6s ease-in-out infinite;
+  }
+
+  .animate-reveal {
+    opacity: 0;
+    animation: revealText 1.2s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+    animation-delay: 0.8s; 
+  }
+
+  .animate-stack-in {
+    opacity: 0;
+    animation: slideInRight 0.9s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+  }
+
+  /* Force these delays to be stronger */
+  .delay-long-1 { animation-delay: 1.8s !important; }
+  .delay-long-2 { animation-delay: 2.2s !important; }
+  .delay-long-3 { animation-delay: 2.6s !important; }
+}
