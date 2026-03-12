@@ -25,6 +25,11 @@
   100% { opacity: 1; transform: translateX(0); }
 }
 
+@keyframes bounceSlow {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-8px); }
+}
+
 /* --- UTILITIES --- */
 @layer utilities {
   .animate-float {
@@ -46,4 +51,28 @@
   .delay-long-1 { animation-delay: 1.8s !important; }
   .delay-long-2 { animation-delay: 2.2s !important; }
   .delay-long-3 { animation-delay: 2.6s !important; }
+
+    .animate-button-pop {
+  opacity: 0;
+  animation: revealText 1.2s cubic-bezier(0.22, 1, 0.36, 1) forwards !important;
+}
+
+.delay-button-1 { animation-delay: 3.0s !important; }
+.delay-button-2 { animation-delay: 3.3s !important; }
+  
+
+/* Add this inside @layer utilities */
+
+
+
+.animate-indicator {
+  animation: bounceSlow 2s ease-in-out infinite;
+}
+
+/* We want this to appear only AFTER the buttons have loaded */
+.delay-indicator {
+  opacity: 0;
+  animation: revealText 1s ease-out forwards !important;
+  animation-delay: 4s !important;
+}
 }

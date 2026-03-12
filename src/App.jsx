@@ -6,6 +6,19 @@ import hiring from './assets/hiring.jpg';
 import bangibranch from './assets/bangibranch.jpg';
 import menu1 from './assets/menu1.jpg';
 import Memories from './components/Memories';
+import bakerinaanja from './assets/bakerinaanja.jpg';
+import bakerinaeco from './assets/bakerinaeco.jpg';
+import eco1 from './assets/eco1.png';
+import eco2 from './assets/eco2.png';
+import eco3 from './assets/eco3.png';
+import eco4 from './assets/eco4.png';
+import eco5 from './assets/eco5.png';
+import eco6 from './assets/eco6.png';
+import anja1 from './assets/anja1.png';
+import anja2 from './assets/anja2.png';
+import anja3 from './assets/anja3.png';
+import anja4 from './assets/anja4.png';
+
 
 export default function App() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -13,8 +26,26 @@ export default function App() {
   const [selectedAnnouncement, setSelectedAnnouncement] = useState(null);
   const [showOrderTeaser, setShowOrderTeaser] = useState(false);
   const [formData, setFormData] = useState({ name: '', date: '', pax: '2' });
+  const [activeMenu, setActiveMenu] = useState(null);
 
 
+  const openMenu = (type) => {
+    setActiveMenu(type);
+    setIsMenuOpen(true);
+  };
+
+  const menuData = {
+    eco: {
+      title: "Eco Majestic Menu",
+      pdf: "/menus/bakerinaeco.pdf", // Path to your PDF in public folder
+      images: [eco1, eco2, eco3, eco4, eco5, eco6] // Your converted PNGs
+    },
+    anja: {
+      title: "Anja Residensi Menu",
+      pdf: "/menus/bakerinaanja.pdf",
+      images: [anja1, anja2, anja3, anja4]
+    }
+  };
 
   // Auto-slide logic
   useEffect(() => {
@@ -63,12 +94,21 @@ export default function App() {
           </div>
         </div>
 
-        {/* 2. Links Centered (Hidden on Mobile) */}
-        <div className="hidden md:flex justify-center gap-8 text-[11px] font-black uppercase tracking-widest">
-          <a href="#" className="hover:text-brand-yellow transition-all">Pastries</a>
-          <a href="#" className="hover:text-brand-yellow transition-all">Pizza</a>
-          <a href="#" className="hover:text-brand-yellow transition-all">Our Oven</a>
-        </div>
+{/* 2. Middle Section: High Contrast Black Text on White Pill */}
+<div className="hidden md:flex justify-center">
+  <div className="flex items-center gap-3 px-4 py-2 bg-white rounded-full">
+    <span className="relative flex h-2 w-2">
+      {/* Ping still yellow to match your brand */}
+      <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-brand-yellow opacity-75"></span>
+      <span className="relative inline-flex rounded-full h-2 w-2 bg-brand-yellow"></span>
+    </span>
+    
+    {/* TEXT IS NOW BLACK */}
+    <span className="text-[10px] font-black uppercase tracking-widest text-black">
+      Now Serving in Anja Residensi, Bangi
+    </span>
+  </div>
+</div>
 
         {/* 3. Action Button Right */}
         <div className="flex justify-end">
@@ -81,62 +121,98 @@ export default function App() {
         </div>
       </nav>
 
-{/* --- HERO SECTION --- */}
-<section className="relative mx-4 py-16 md:py-32 px-6 overflow-hidden rounded-[3rem] md:rounded-[4rem] shadow-2xl">
-  {/* Background Images - Ensure z-index is low */}
-  <div className="absolute inset-0 z-0">
-    <img src={pizza} alt="Background" className="w-full h-full object-cover" />
-    <div className="absolute inset-0 bg-brand-black/40 backdrop-blur-[1px]"></div>
-  </div>
+      {/* --- HERO SECTION --- */}
+      <section className="relative mx-4 py-16 md:py-32 px-6 overflow-hidden rounded-[3rem] md:rounded-[4rem] shadow-2xl">
+        {/* Background Images - Ensure z-index is low */}
+        <div className="absolute inset-0 z-0">
+          <img src={pizza} alt="Background" className="w-full h-full object-cover" />
+          <div className="absolute inset-0 bg-brand-black/40 backdrop-blur-[1px]"></div>
+        </div>
 
-  <div className="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-12 items-center relative z-10">
-    <div className="lg:col-span-7">
-      <span className="inline-block px-4 py-1 rounded-full border border-white/30 backdrop-blur-md text-brand-white text-[10px] font-black uppercase tracking-[0.2em] mb-6">
-        Est. 2026 • Eco Majestic
-      </span>
-      
-      {/* 1. The Art of Slow Baking - Smooth Fade Up */}
-      <h1 className="animate-reveal text-5xl md:text-[10rem] font-serif leading-[0.85] mb-8 md:mb-10 tracking-tighter text-brand-white">
-        The Art of <br /> <span className="text-brand-yellow">Slow</span> Baking.
-      </h1>
+        <div className="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-12 items-center relative z-10">
+          <div className="lg:col-span-7">
+            <span className="inline-block px-4 py-1 rounded-full border border-white/30 backdrop-blur-md text-brand-white text-[10px] font-black uppercase tracking-[0.2em] mb-6">
+              Est. FEB 2020 • Eco Majestic
+            </span>
 
-      {/* 2. The Sliding Items - Wrapped in overflow-hidden to prevent layout jumps */}
-      <div className="mb-8 md:mb-12 space-y-3 md:space-y-4 overflow-hidden">
-<h2 className="flex flex-wrap items-center gap-2 md:gap-3 text-brand-yellow font-black uppercase tracking-[0.1em] text-[11px] md:text-base">
-  <span className="animate-stack-in delay-long-1">Neapolitan Pizza</span>
-  
-  <span className="text-white/20 opacity-0 animate-stack-in delay-long-1">•</span>
-  
-  <span className="animate-stack-in delay-long-2">Steak</span>
-  
-  <span className="text-white/20 opacity-0 animate-stack-in delay-long-2">•</span>
-  
-  <span className="animate-stack-in delay-long-3">Custom Cakes</span>
-</h2>
+            {/* 1. The Art of Slow Baking - Smooth Fade Up */}
+            <h1 className="animate-reveal text-5xl md:text-[10rem] font-serif leading-[0.85] mb-8 md:mb-10 tracking-tighter text-brand-white">
+              The Art of <br /> <span className="text-brand-yellow">Slow</span> Baking.
+            </h1>
 
-        <p className="text-base md:text-2xl font-medium text-white/90 max-w-lg leading-relaxed">
-          Artisan sourdough and wood-fired excellence. Crafted by hand, served with soul in <span className="text-brand-white">Eco Majestic, Semenyih.</span>
-        </p>
-      </div>
+            {/* 2. The Sliding Items - Wrapped in overflow-hidden to prevent layout jumps */}
+            <div className="mb-8 md:mb-12 space-y-3 md:space-y-4 overflow-hidden">
+              <h2 className="flex flex-wrap items-center gap-2 md:gap-3 text-brand-yellow font-black uppercase tracking-[0.1em] text-[11px] md:text-base">
+                <span className="animate-stack-in delay-long-1">Neapolitan Pizza</span>
 
-      <button
-        onClick={() => setIsMenuOpen(true)}
-        className="h-14 md:h-16 px-8 md:px-10 rounded-full bg-brand-yellow text-brand-black font-black text-base md:text-lg hover:scale-105 transition-transform shadow-xl"
-      >
-        Browse Menu
-      </button>
-    </div>
+                <span className="text-white/20 opacity-0 animate-stack-in delay-long-1">•</span>
 
-    {/* 3. Logo - Floating Motion */}
-    <div className="lg:col-span-5 flex justify-center">
-      <img 
-        src={logoNoBackground} 
-        alt="Logo" 
-        className="animate-float w-64 md:w-full max-w-[400px] object-contain drop-shadow-2xl" 
-      />
-    </div>
-  </div>
-</section>
+                <span className="animate-stack-in delay-long-2">Steak</span>
+
+                <span className="text-white/20 opacity-0 animate-stack-in delay-long-2">•</span>
+
+                <span className="animate-stack-in delay-long-3">Custom Cakes</span>
+              </h2>
+
+              <p className="text-base md:text-2xl font-medium text-white/90 max-w-lg leading-relaxed">
+                From artisan cakes to prime steaks and hand-stretched pizza. Crafted by hand, served with soul in <span className="text-white font-bold">Eco Majestic & Bangi.</span>
+              </p>
+            </div>
+
+            <div className="mt-16 relative">
+              {/* MOVING INDICATOR - Nested for separate reveal and bounce logic */}
+              <div className="delay-indicator absolute -top-12 left-6 z-20">
+                <div className="flex items-center gap-2 animate-indicator">
+                  <span className="text-[10px] font-black uppercase tracking-[0.3em] text-brand-yellow bg-brand-black/60 backdrop-blur-md px-3 py-1.5 rounded-full border border-brand-yellow/30 shadow-lg">
+                    Click Menu Here
+                  </span>
+                  {/* Animated chevron/arrow */}
+                  <div className="text-brand-yellow drop-shadow-md">
+                    <svg
+                      width="20"
+                      height="20"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      strokeWidth="3"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                    >
+                      <path d="M7 13l5 5 5-5M7 6l5 5 5-5" />
+                    </svg>
+                  </div>
+                </div>
+              </div>
+
+              {/* YOUR PILL BUTTONS */}
+              <div className="flex flex-col sm:flex-row gap-4 relative z-10">
+                <button
+                  onClick={() => openMenu('eco')} // Changed logic, kept your style
+                  className="animate-button-pop delay-button-1 h-14 md:h-20 w-52 md:w-72 rounded-full bg-white shadow-xl overflow-hidden transition-all duration-300 hover:scale-105 active:scale-95 border-2 border-brand-yellow/20 hover:border-brand-yellow flex items-center justify-center p-3"
+                >
+                  <img src={bakerinaeco} alt="Eco" className="w-full h-full object-contain" />
+                </button>
+
+                <button
+                  onClick={() => openMenu('anja')} // Changed logic, kept your style
+                  className="animate-button-pop delay-button-2 h-14 md:h-20 w-52 md:w-72 rounded-full bg-white shadow-xl overflow-hidden transition-all duration-300 hover:scale-105 active:scale-95 border-2 border-brand-yellow/20 hover:border-brand-yellow flex items-center justify-center p-3"
+                >
+                  <img src={bakerinaanja} alt="Anja" className="w-full h-full object-contain" />
+                </button>
+              </div>
+            </div>
+          </div>
+
+          {/* 3. Logo - Floating Motion */}
+          <div className="lg:col-span-5 flex justify-center">
+            <img
+              src={logoNoBackground}
+              alt="Logo"
+              className="animate-float w-64 md:w-full max-w-[400px] object-contain drop-shadow-2xl"
+            />
+          </div>
+        </div>
+      </section>
 
       {/* --- ANNOUNCEMENTS SECTION --- */}
       <section className="w-full py-16 md:py-24 bg-brand-white relative overflow-hidden">
@@ -278,23 +354,9 @@ export default function App() {
         </div>
       )}
 
-      {/* --- MENU IMAGE POPUP (triggered by Browse Menu) --- */}
-      {isMenuOpen && (
-        <div className="fixed inset-0 z-[120] flex items-center justify-center p-4">
-          <div className="absolute inset-0 bg-brand-black/90 backdrop-blur-md" onClick={() => setIsMenuOpen(false)}></div>
-          <div className="relative w-full max-w-2xl max-h-[90vh] overflow-y-auto bg-brand-white rounded-[2rem] shadow-2xl">
-            <button
-              onClick={() => setIsMenuOpen(false)}
-              className="fixed md:absolute top-4 right-4 z-[130] bg-brand-black text-brand-white w-10 h-10 rounded-full flex items-center justify-center font-black"
-            >✕</button>
-            <img src={menu1} alt="Menu" className="w-full h-auto" />
-          </div>
-        </div>
-      )}
-
 
       <Memories />
-{/* --- FOOTER --- */}
+      {/* --- FOOTER --- */}
       <footer className="bg-brand-black text-brand-white mt-24 py-16 md:py-24 px-6 rounded-t-[3rem] md:rounded-t-[5rem]">
         <div className="max-w-7xl mx-auto">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-16 md:gap-8 items-start">
@@ -311,7 +373,7 @@ export default function App() {
                 </div>
               </div>
               <p className="text-white/50 text-sm leading-relaxed max-w-xs font-medium">
-                Crafting artisan sourdough and wood-fired excellence since 2026. Every loaf and pizza tells a story of patience and soul.
+                Crafting artisan sourdough and wood-fired excellence since 2020. Every loaf and pizza tells a story of patience and soul.
               </p>
             </div>
 
@@ -385,20 +447,20 @@ export default function App() {
         </div>
       </footer>
 
-{/* --- THE INTERACTIVE FLOOR PLAN CARD (LIGHT BACKDROP) --- */}
+      {/* --- THE INTERACTIVE FLOOR PLAN CARD (LIGHT BACKDROP) --- */}
       {showOrderTeaser && (
         <div className="fixed inset-0 z-[300] flex items-center justify-center p-4">
           {/* LIGHTER BACKDROP: Milky glass effect instead of dark black */}
-          <div 
+          <div
             className="absolute inset-0 bg-white/40 backdrop-blur-md"
             onClick={() => setShowOrderTeaser(false)}
           ></div>
 
           {/* THE CARD */}
           <div className="relative bg-brand-white w-full max-w-sm rounded-[3rem] overflow-hidden shadow-[0_20px_60px_rgba(0,0,0,0.15)] animate-in zoom-in duration-300 border-t-8 border-brand-yellow">
-            
+
             {/* TOP RIGHT X BUTTON */}
-            <button 
+            <button
               onClick={() => setShowOrderTeaser(false)}
               className="absolute top-6 right-8 z-50 w-10 h-10 flex items-center justify-center rounded-full bg-brand-black/5 hover:bg-brand-black hover:text-brand-yellow transition-all text-brand-black font-black text-xs"
             >
@@ -417,7 +479,7 @@ export default function App() {
 
             {/* 2. THE TABLE LAYOUT (Mimic UI) */}
             <div className="relative px-8 py-10">
-              
+
               {/* THE LOADER: Floating over the tables */}
               <div className="absolute inset-0 z-20 flex flex-col items-center justify-center pointer-events-none">
                 <div className="w-16 h-16 border-[3px] border-brand-black/5 border-t-brand-yellow rounded-full animate-spin shadow-sm"></div>
@@ -471,16 +533,62 @@ export default function App() {
               </p>
 
               <a
-                href="https://api.whatsapp.com/send/?phone=60197914431&text=Hi+I+would+like+to+make+a+reservation+at+Bakerina+and+pick+a+specific+table&type=phone_number&app_absent=0" 
+                href="https://api.whatsapp.com/send/?phone=60197914431&text=Hi+I+would+like+to+make+a+reservation+at+Bakerina+and+pick+a+specific+table&type=phone_number&app_absent=0"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="block w-full py-5 bg-brand-black text-brand-yellow rounded-2xl font-black uppercase tracking-[0.3em] text-[10px] shadow-xl hover:bg-brand-yellow hover:text-brand-black transition-all active:scale-95 text-center"
               >
                 Confirm via WhatsApp
               </a>
-              
+
               <div className="h-6"></div>
             </div>
+          </div>
+        </div>
+      )}
+
+      {isMenuOpen && activeMenu && (
+        <div className="fixed inset-0 z-[100] bg-brand-black/95 backdrop-blur-xl flex flex-col">
+
+          {/* HEADER: Title and Close */}
+          <div className="flex items-center justify-between p-6 border-b border-white/10 bg-brand-black">
+            <div>
+              <h3 className="text-brand-yellow font-serif text-2xl">{menuData[activeMenu].title}</h3>
+              <p className="text-brand-white/40 text-[10px] uppercase tracking-widest">Scroll to view all pages</p>
+            </div>
+            <button
+              onClick={() => setIsMenuOpen(false)}
+              className="w-12 h-12 rounded-full bg-white/10 flex items-center justify-center text-white hover:bg-brand-yellow hover:text-brand-black transition-colors"
+            >
+              ✕
+            </button>
+          </div>
+
+          {/* CONTENT: Scrollable Images */}
+          <div className="flex-1 overflow-y-auto p-4 md:p-8 space-y-6">
+            {menuData[activeMenu].images.map((img, index) => (
+              <div key={index} className="relative group">
+                <img
+                  src={img}
+                  alt={`Page ${index + 1}`}
+                  className="w-full max-w-4xl mx-auto rounded-lg shadow-2xl border border-white/5"
+                />
+              </div>
+            ))}
+          </div>
+
+          {/* FOOTER: Download Button */}
+          <div className="p-6 bg-brand-black border-t border-white/10 flex justify-center">
+            <a
+              href={menuData[activeMenu].pdf}
+              download
+              className="flex items-center gap-3 bg-brand-yellow text-brand-black px-8 py-4 rounded-full font-black uppercase text-sm tracking-widest hover:scale-105 transition-transform shadow-lg"
+            >
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3">
+                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v4m4-10l5 5 5-5m-5-5v12" />
+              </svg>
+              Download PDF Menu
+            </a>
           </div>
         </div>
       )}
