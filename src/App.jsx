@@ -8,16 +8,10 @@ import menu1 from './assets/menu1.jpg';
 import Memories from './components/Memories';
 import bakerinaanja from './assets/bakerinaanja.jpg';
 import bakerinaeco from './assets/bakerinaeco.jpg';
-import eco1 from './assets/eco1.png';
-import eco2 from './assets/eco2.png';
-import eco3 from './assets/eco3.png';
-import eco4 from './assets/eco4.png';
-import eco5 from './assets/eco5.png';
-import eco6 from './assets/eco6.png';
-import anja1 from './assets/anja1.png';
-import anja2 from './assets/anja2.png';
-import anja3 from './assets/anja3.png';
-import anja4 from './assets/anja4.png';
+import eco1 from './assets/BakerinaMenu_2026-1.png';
+import eco2 from './assets/BakerinaMenu_2026-2.png';
+import eco3 from './assets/BakerinaMenu_2026-3.png';
+import eco4 from './assets/BakerinaMenu_2026-4.png';
 
 
 export default function App() {
@@ -36,15 +30,10 @@ export default function App() {
 
   const menuData = {
     eco: {
-      title: "Eco Majestic Menu",
-      pdf: "/menus/bakerinaeco.pdf", // Path to your PDF in public folder
-      images: [eco1, eco2, eco3, eco4, eco5, eco6] // Your converted PNGs
+      title: "Bekerina Menu",
+      pdf: "/menus/BakerinaMenu_2026.pdf", // Path to your PDF in public folder
+      images: [eco1, eco2, eco3, eco4] // Your converted PNGs
     },
-    anja: {
-      title: "Anja Residensi Menu",
-      pdf: "/menus/bakerinaanja.pdf",
-      images: [anja1, anja2, anja3, anja4]
-    }
   };
 
   // Auto-slide logic
@@ -191,13 +180,6 @@ export default function App() {
                   className="animate-button-pop delay-button-1 h-14 md:h-20 w-52 md:w-72 rounded-full bg-white shadow-xl overflow-hidden transition-all duration-300 hover:scale-105 active:scale-95 border-2 border-brand-yellow/20 hover:border-brand-yellow flex items-center justify-center p-3"
                 >
                   <img src={bakerinaeco} alt="Eco" className="w-full h-full object-contain" />
-                </button>
-
-                <button
-                  onClick={() => openMenu('anja')} // Changed logic, kept your style
-                  className="animate-button-pop delay-button-2 h-14 md:h-20 w-52 md:w-72 rounded-full bg-white shadow-xl overflow-hidden transition-all duration-300 hover:scale-105 active:scale-95 border-2 border-brand-yellow/20 hover:border-brand-yellow flex items-center justify-center p-3"
-                >
-                  <img src={bakerinaanja} alt="Anja" className="w-full h-full object-contain" />
                 </button>
               </div>
             </div>
